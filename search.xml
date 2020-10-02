@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>/2020/10/02/webpack%20%E5%8A%A0%E8%BD%BD%E5%99%A8/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="webpack-加载器"><a href="#webpack-加载器" class="headerlink" title="webpack 加载器"></a>webpack 加载器</h2><p>通过loader打包非js模块</p>
+<p>在实际开发过程中 webpack默认只能打包处理以.js后缀名结尾的模块，其他的非.js后缀名结尾的模块，webpack默认处理不了，需要使用loader加载器才能正常打包，否则会报错。</p>
+<h3 id="webpack中加载器的基本使用"><a href="#webpack中加载器的基本使用" class="headerlink" title="webpack中加载器的基本使用"></a>webpack中加载器的基本使用</h3><h4 id="1-打包处理css文件"><a href="#1-打包处理css文件" class="headerlink" title="1 打包处理css文件"></a><strong>1 打包处理css文件</strong></h4><p>第一步：运行 npm i style-loader  css-loader -D命令，安装处理css文件的loader</p>
+<p>第二步：在webpack.config.js的module-&gt;rules数组中，添加loader规则：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>:&#123;</span><br><span class="line">    <span class="comment">//这里test表示文件匹配类型 用的正则表达式 use表示要调用的loader</span></span><br><span class="line">    rules:[</span><br><span class="line">        &#123;<span class="attr">test</span>:<span class="regexp">/\.css$/</span>,use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>]&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//##注意：use中loader的顺序是固定的  因为当多个loader时其中的调用顺序是从后往前调用 这里应该是先调用css-loader 再调用style-loader</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-打包和处理less文件-less和scss一样，都是样式的预编语言"><a href="#2-打包和处理less文件-less和scss一样，都是样式的预编语言" class="headerlink" title="2.打包和处理less文件  (less和scss一样，都是样式的预编语言)"></a><strong>2.打包和处理less文件</strong>  (less和scss一样，都是样式的预编语言)</h4><p>第一步：运行 npm i less-loader less -D命令，安装处理less文件的loader，这里less是less-loader的内置依赖项</p>
+<p>第二步：在webpack.config.js的module-&gt;rules数组中，添加loader规则：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>:&#123;</span><br><span class="line">    <span class="comment">//这里test表示文件匹配类型 用的正则表达式 use表示要调用的loader</span></span><br><span class="line">    rules:[</span><br><span class="line">        &#123;<span class="attr">test</span>:<span class="regexp">/\.less$/</span>,use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>,<span class="string">&#x27;less-loader&#x27;</span>]&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-打包和处理scss文件-文件是scss-包是sass-不要混淆"><a href="#3-打包和处理scss文件-文件是scss-包是sass-不要混淆" class="headerlink" title="3.打包和处理scss文件(文件是scss 包是sass 不要混淆)"></a><strong>3.打包和处理scss文件</strong>(文件是scss 包是sass 不要混淆)</h4><p>第一步：运行 npm i sass-loader node-sass -D命令，安装处理scss文件的loader</p>
+<p>第二步：在webpack.config.js的module-&gt;rules数组中，添加loader规则：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">module</span>:&#123;</span><br><span class="line">    <span class="comment">//这里test表示文件匹配类型 用的正则表达式 use表示要调用的loader</span></span><br><span class="line">    rules:[</span><br><span class="line">        &#123;<span class="attr">test</span>:<span class="regexp">/\.scss$/</span>,use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>,<span class="string">&#x27;sass-loader&#x27;</span>]&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-配置postcss自动添加css的兼容前缀"><a href="#4-配置postcss自动添加css的兼容前缀" class="headerlink" title="4.配置postcss自动添加css的兼容前缀"></a><strong>4.配置postcss自动添加css的兼容前缀</strong></h4><p>第一步：运行 npm i postcss-loader autoprefixer -D命令，安装处理css兼容前缀的文件的loader</p>
+<p>第二步：在项目根目录中创建一个postcss的配置文件postcss.config.js,并初始化如下配置：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> autoprefixer= <span class="built_in">require</span>(<span class="string">&#x27;autoprefixer&#x27;</span>)  <span class="comment">//导入自动添加前缀的插件</span></span><br><span class="line"><span class="built_in">module</span>.exports=&#123;  <span class="comment">//向外暴露配置对象</span></span><br><span class="line">    plugins:[autoprefixer]  <span class="comment">//挂载插件</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第三步：在webpack.config.js的module-&gt;rules数组中，修改css的loader规则：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>:&#123;</span><br><span class="line">    rules:[</span><br><span class="line">        &#123;<span class="attr">test</span>:<span class="regexp">/\.css$/</span>,use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>,<span class="string">&#x27;postcss-loader&#x27;</span>]&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong>第一步有一个版本问题  默认安装的时最新版本的autoprefixer 使用最新版本的话可能会出现bug 导致css加载器无法使用  这时候可以<strong>降低</strong>autoprefixer的版本  执行以下命令：<strong>npm install <a href="mailto:&#97;&#x75;&#x74;&#x6f;&#112;&#x72;&#101;&#x66;&#105;&#x78;&#x65;&#x72;&#x40;&#x39;&#46;&#x38;&#46;&#54;">&#97;&#x75;&#x74;&#x6f;&#112;&#x72;&#101;&#x66;&#105;&#x78;&#x65;&#x72;&#x40;&#x39;&#46;&#x38;&#46;&#54;</a> -D</strong></p>
+<h4 id="5-打包样式表中的图片和字体文件"><a href="#5-打包样式表中的图片和字体文件" class="headerlink" title="5.打包样式表中的图片和字体文件"></a><strong>5.打包样式表中的图片和字体文件</strong></h4><p>第一步：运行 npm i url-loader file-loader -D命令</p>
+<p>第二步：在webpack.config.js的module-&gt;rules数组中，添加loader规则：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#123;<span class="attr">test</span>:<span class="regexp">/\.jpg|png|gif|bmp|ttf|eot|svg|woff|woff2$/</span>,use:[<span class="string">&#x27;url-loader?limit=16940&#x27;</span>]&#125;</span><br><span class="line"><span class="comment">//其中？之后的是loader的参数项， limit用来指定图片的大小，单位是字节（byte），只有小于limit大小的图片，才会被转为base64图片</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="5-打包与处理js文件中的高级语法"><a href="#5-打包与处理js文件中的高级语法" class="headerlink" title="5.打包与处理js文件中的高级语法"></a>5.打包与处理js文件中的高级语法</h4><p>第一步：安装babel转换器相关的包：npm i babel-loader @babel/core @babel/runtime -D</p>
+<p>第二步：安装babel语法插件相关的包：npm i @babel/preset-env @babel/plugin-transform-runtime  @babel/plugin-proposal-class-properties -D</p>
+<p>第三步：在项目根目录中，创建babel配置文件babel.config.js并初始化配置如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports=&#123;</span><br><span class="line">    presets:[<span class="string">&#x27;@babel/preset-env&#x27;</span>],</span><br><span class="line">    plugins:[<span class="string">&#x27;@babel/plugin-transform-runtime&#x27;</span>,<span class="string">&#x27;@babel/plugin-proposal-class-properties&#x27;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第四步：在webpack.config.js的module-&gt;rules数组中，添加loader规则：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>:&#123;</span><br><span class="line">     rules:[</span><br><span class="line">&#123;<span class="attr">test</span>:<span class="regexp">/\.css$/</span>, use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>,<span class="string">&#x27;postcss-loader&#x27;</span>]&#125;,</span><br><span class="line">&#123;<span class="attr">test</span>:<span class="regexp">/\.less$/</span>,use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>,<span class="string">&#x27;less-loader&#x27;</span>]&#125;,</span><br><span class="line">&#123;<span class="attr">test</span>:<span class="regexp">/\.scss$/</span>,use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>,<span class="string">&#x27;sass-loader&#x27;</span>]&#125;,    &#123;<span class="attr">test</span>:<span class="regexp">/\.jpg|png|gif|bmp|ttf|eot|svg|woff|woff2$/</span>,use:[<span class="string">&#x27;url-loader?limit=139265&#x27;</span>]&#125;,</span><br><span class="line">        &#123;<span class="attr">test</span>:<span class="regexp">/\.js$/</span>,use:<span class="string">&#x27;babel-loader&#x27;</span>, <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>&#125;</span><br><span class="line">    ]</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
     <title>demo1</title>
     <url>/2020/09/22/demo1/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h1>]]></content>
