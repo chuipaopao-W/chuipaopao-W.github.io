@@ -87,7 +87,7 @@
 <p>第三步：在webpack.config.js的module-&gt;rules数组中，修改css的loader规则：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>:&#123;</span><br><span class="line">    rules:[</span><br><span class="line">        &#123;<span class="attr">test</span>:<span class="regexp">/\.css$/</span>,use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>,<span class="string">&#x27;postcss-loader&#x27;</span>]&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>注意：</strong>第一步有一个版本问题  默认安装的时最新版本的autoprefixer 使用最新版本的话可能会出现bug 导致css加载器无法使用  这时候可以<strong>降低</strong>autoprefixer的版本  执行以下命令：<strong>npm install <a href="mailto:&#97;&#x75;&#116;&#x6f;&#112;&#x72;&#x65;&#x66;&#105;&#120;&#101;&#114;&#64;&#x39;&#x2e;&#56;&#46;&#54;">&#97;&#x75;&#116;&#x6f;&#112;&#x72;&#x65;&#x66;&#105;&#120;&#101;&#114;&#64;&#x39;&#x2e;&#56;&#46;&#54;</a> -D</strong></p>
+<p><strong>注意：</strong>第一步有一个版本问题  默认安装的时最新版本的autoprefixer 使用最新版本的话可能会出现bug 导致css加载器无法使用  这时候可以<strong>降低</strong>autoprefixer的版本  执行以下命令：<strong>npm install <a href="mailto:&#x61;&#117;&#x74;&#111;&#x70;&#x72;&#x65;&#x66;&#x69;&#120;&#101;&#114;&#x40;&#57;&#x2e;&#x38;&#46;&#54;">&#x61;&#117;&#x74;&#111;&#x70;&#x72;&#x65;&#x66;&#x69;&#120;&#101;&#114;&#x40;&#57;&#x2e;&#x38;&#46;&#54;</a> -D</strong></p>
 <h4 id="5-打包样式表中的图片和字体文件"><a href="#5-打包样式表中的图片和字体文件" class="headerlink" title="5.打包样式表中的图片和字体文件"></a><strong>5.打包样式表中的图片和字体文件</strong></h4><p>第一步：运行 npm i url-loader file-loader -D命令</p>
 <p>第二步：在webpack.config.js的module-&gt;rules数组中，添加loader规则：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#123;<span class="attr">test</span>:<span class="regexp">/\.jpg|png|gif|bmp|ttf|eot|svg|woff|woff2$/</span>,use:[<span class="string">&#x27;url-loader?limit=16940&#x27;</span>]&#125;</span><br><span class="line"><span class="comment">//其中？之后的是loader的参数项， limit用来指定图片的大小，单位是字节（byte），只有小于limit大小的图片，才会被转为base64图片</span></span><br></pre></td></tr></table></figure>
@@ -111,6 +111,54 @@
 
 
 <p>……以上就是webpack加载器中比较常用的配置</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2020/10/15/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98%E3%80%90%20if(a%20==%201%20&amp;&amp;%20a%20==%202%20&amp;&amp;%20a%20==%203)%20%E3%80%91/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="经典问题【-if-a-1-amp-amp-a-2-amp-amp-a-3-】"><a href="#经典问题【-if-a-1-amp-amp-a-2-amp-amp-a-3-】" class="headerlink" title="经典问题【 if(a == 1 &amp;&amp; a == 2 &amp;&amp; a == 3) 】"></a>经典问题【 if(a == 1 &amp;&amp; a == 2 &amp;&amp; a == 3) 】</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span>)&#123;</span><br><span class="line">    <span class="comment">//... 使之成立    </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="思考方向-—-【利用隐式转换规则】"><a href="#思考方向-—-【利用隐式转换规则】" class="headerlink" title="思考方向 — 【利用隐式转换规则】"></a>思考方向 — 【<strong>利用隐式转换规则</strong>】</h4><p><code>==</code> 操作符在左右数据类型不一致时，会先进行隐式转换。</p>
+<p><code>a == 1 &amp;&amp; a == 2 &amp;&amp; a == 3</code> 的值意味着其不可能是基本数据类型。因为如果 a 是 null 或者是 undefined bool类型，都不可能返回true。</p>
+<p>因此可以推测 a 是复杂数据类型，JS 中复杂数据类型只有 <code>object</code>，回忆一下，Object 转换为原始类型会调用什么方法？</p>
+<ul>
+<li>如果部署了 <code>[Symbol.toPrimitive]</code> 接口，那么调用此接口，若返回的不是基本数据类型，抛出错误。</li>
+<li>如果没有部署[Symbol.toPrimitive]接口，那么根据要转换的类型，先调用valueOf/toString<ol>
+<li>非Date类型对象，<code>hint</code> 是 <code>default</code> 时，调用顺序为：<code>valueOf</code> &gt;&gt;&gt; <code>toString</code>，即<code>valueOf</code> 返回的不是基本数据类型，才会继续调用 <code>toString</code>，如果<code>toString</code> 返回的还不是基本数据类型，那么抛出错误。</li>
+<li>如果 <code>hint</code> 是 <code>string</code>(Date对象的hint默认是string) ，调用顺序为：<code>toString</code> &gt;&gt;&gt; <code>valueOf</code>，即<code>toString</code> 返回的不是基本数据类型，才会继续调用 <code>valueOf</code>，如果<code>valueOf</code> 返回的还不是基本数据类型，那么抛出错误。</li>
+<li>如果 <code>hint</code> 是 <code>number</code>，调用顺序为： <code>valueOf</code> &gt;&gt;&gt; <code>toString</code></li>
+</ol>
+</li>
+</ul>
+<h3 id="7种解决方案"><a href="#7种解决方案" class="headerlink" title="7种解决方案"></a>7种解决方案</h3><ol>
+<li><p>利用 [Symbol.toPrimitive] 接口</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    [<span class="built_in">Symbol</span>.toPrimitive]: (<span class="function"><span class="keyword">function</span>(<span class="params">hint</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> i++;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;)()</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span>); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用 valueOf 接口</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    valueOf: (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)()</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span>); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>利用 正则</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    reg: <span class="regexp">/\d/g</span>,</span><br><span class="line">    valueOf () &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.reg.exec(<span class="number">123</span>)[<span class="number">0</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span>); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>利用数据劫持</p>
+<ul>
+<li><p>使用 Object.defineProperty 定义的属性，在获取属性时，会调用 get 方法。利用这个特性，我们在 window 对象上定义 a 属性</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(<span class="built_in">window</span>, <span class="string">&#x27;a&#x27;</span>, &#123;</span><br><span class="line">    get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> i++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span>); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>利用ES6 Proxy</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="built_in">Proxy</span>(&#123;&#125;, &#123;</span><br><span class="line">    i: <span class="number">1</span>,</span><br><span class="line">    get: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">this</span>.i++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重写数组的 join</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">a.join = a.shift;</span><br><span class="line"><span class="built_in">console</span>.log(a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span>); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>利用 with 关键字</p>
+</li>
+</ol>
+<blockquote>
+<p>注意：0 == ‘\n’ //true</p>
+</blockquote>
 ]]></content>
   </entry>
 </search>
