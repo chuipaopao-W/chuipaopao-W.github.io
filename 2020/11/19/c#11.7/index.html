@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="生活,博客,前端" />
+   
+  <meta name="description" content="喜欢悠哉独自在" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+     喜欢悠哉独自在
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="漂" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-c#11.7"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2020/11/19/c#11.7/" class="article-date">
+  <time datetime="2020-11-19T11:15:28.654Z" itemprop="datePublished">2020-11-19</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">7 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="11-7"><a href="#11-7" class="headerlink" title="11.7"></a>11.7</h3><h4 id="单精度和双精度数据类型"><a href="#单精度和双精度数据类型" class="headerlink" title="单精度和双精度数据类型"></a>单精度和双精度数据类型</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">float数据在计算机机器内部是2进制数，一般用1个字（4个字节，32位）来表示，</span><br><span class="line">1位符号位</span><br><span class="line">8位指数位</span><br><span class="line">23位“尾数”位</span><br><span class="line">【2^23&#x3D;8388608，一共7位，这意味着最多能有7位有效数字，但是能绝对能保证的为6位，也即float的精度为6~7位。】</span><br><span class="line">共32 位 2进制数。</span><br><span class="line">平时讲 有效数字 是6~7位 ，指10进制。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">单精度和双精度变量的范围与整数不同，在整数中是每个位只存放<span class="number">0</span>和<span class="number">1</span>，每位作为一个有效位出现，可以直接通过将二进制转换为十进制的方式来完成最大最小值的获得。</span><br><span class="line">而浮点型的比较复杂，建议你找一下IEEE754标准看一下。 </span><br><span class="line">在IEEE754标准中进行了单精度浮点数(<span class="keyword">float</span>)和双精度数浮点数(<span class="keyword">double</span>)的定义。<span class="keyword">float</span>有<span class="number">32b</span>it，<span class="keyword">double</span>有<span class="number">64b</span>it。它们的构成包括符号位、指数位和尾数位。 </span><br><span class="line">这些位的构成如下： </span><br><span class="line">种类-------符号位-------------指数位----------------尾数位---- </span><br><span class="line"><span class="keyword">float</span>---第<span class="number">31</span>位(占<span class="number">1b</span>it)---第<span class="number">30</span><span class="number">-23</span>位(占<span class="number">8b</span>it)----第<span class="number">22</span><span class="number">-0</span>位(占<span class="number">23b</span>it) </span><br><span class="line"><span class="keyword">double</span>--第<span class="number">63</span>位(占<span class="number">1b</span>it)---第<span class="number">62</span><span class="number">-52</span>位(占<span class="number">11b</span>it)---第<span class="number">51</span><span class="number">-0</span>位(占<span class="number">52b</span>it) </span><br><span class="line"></span><br><span class="line">取值范围主要看指数部分： </span><br><span class="line"><span class="keyword">float</span>的指数部分有<span class="number">8b</span>it(<span class="number">2</span>^<span class="number">8</span>)，由于是有符号型，所以得到对应的指数范围<span class="number">-128</span>~<span class="number">127</span>。 </span><br><span class="line"><span class="keyword">double</span>的指数部分有<span class="number">11b</span>it(<span class="number">2</span>^<span class="number">11</span>)，由于是有符号型，所以得到对应的指数范围<span class="number">-1024</span>~<span class="number">1023</span>。 </span><br><span class="line"></span><br><span class="line">由于<span class="keyword">float</span>的指数部分对应的指数范围为<span class="number">-128</span>~<span class="number">127</span>，所以取值范围为： </span><br><span class="line"><span class="number">-2</span>^<span class="number">128</span>到<span class="number">2</span>^<span class="number">127</span>，约等于<span class="number">-3.4E38</span> — +<span class="number">3.4E38</span> </span><br><span class="line"></span><br><span class="line">精度(有效数字)主要看尾数位： </span><br><span class="line"><span class="keyword">float</span>的尾数位是<span class="number">23b</span>it，对应<span class="number">7</span>~<span class="number">8</span>位十进制数，所以有效数字有的编译器是<span class="number">7</span>位，也有的是<span class="number">8</span>位</span><br><span class="line"></span><br><span class="line"><span class="number">23</span>位“尾数”位</span><br><span class="line">【<span class="number">2</span>^<span class="number">23</span>=<span class="number">8388608</span>，一共<span class="number">7</span>位，这意味着最多能有<span class="number">7</span>位有效数字，但是能绝对能保证的为<span class="number">6</span>位，也即<span class="keyword">float</span>的精度为<span class="number">6</span>~<span class="number">7</span>位。】</span><br></pre></td></tr></table></figure>
+
+<p><strong>符号位0代表为正 1代表为负</strong></p>
+<p><strong>double有1位符号位 47位尾数位  16位指数位</strong></p>
+<h4 id="接受来自用户的值"><a href="#接受来自用户的值" class="headerlink" title="接受来自用户的值"></a>接受来自用户的值</h4><p><strong>System</strong> 命名空间中的 <strong>Console</strong> 类提供了一个函数 **ReadLine()**，用于接收来自用户的输入，并把它存储到一个变量中。</p>
+<h4 id="C-中的两种表达式："><a href="#C-中的两种表达式：" class="headerlink" title="C# 中的两种表达式："></a>C# 中的两种表达式：</h4><ol>
+<li><strong>lvalue</strong>：lvalue 表达式可以出现在赋值语句的左边或右边。</li>
+<li><strong>rvalue</strong>：rvalue 表达式可以出现在赋值语句的右边，不能出现在赋值语句的左边。</li>
+</ol>
+<p>变量是 lvalue 的，所以可以出现在赋值语句的左边。数值是 rvalue 的，因此不能被赋值，不能出现在赋值语句的左边。</p>
+<p>下面是一个有效的语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int g &#x3D; 20;</span><br></pre></td></tr></table></figure>
+
+<p>下面是一个无效的语句，会产生编译时错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10 &#x3D; 20;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="转义序列码"><a href="#转义序列码" class="headerlink" title="转义序列码"></a>转义序列码</h4><table>
+<thead>
+<tr>
+<th align="left">转义序列</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\</td>
+<td align="left">\ 字符</td>
+</tr>
+<tr>
+<td align="left">&#39;</td>
+<td align="left">‘ 字符</td>
+</tr>
+<tr>
+<td align="left">&quot;</td>
+<td align="left">“ 字符</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td align="left">? 字符</td>
+</tr>
+<tr>
+<td align="left">\a</td>
+<td align="left">Alert 或 bell</td>
+</tr>
+<tr>
+<td align="left">\b</td>
+<td align="left">退格键（Backspace）</td>
+</tr>
+<tr>
+<td align="left">\f</td>
+<td align="left">换页符（Form feed）</td>
+</tr>
+<tr>
+<td align="left">\n</td>
+<td align="left">换行符（Newline）</td>
+</tr>
+<tr>
+<td align="left">\r</td>
+<td align="left">回车</td>
+</tr>
+<tr>
+<td align="left">\t</td>
+<td align="left">水平制表符 tab</td>
+</tr>
+<tr>
+<td align="left">\v</td>
+<td align="left">垂直制表符 tab</td>
+</tr>
+<tr>
+<td align="left">\ooo</td>
+<td align="left">一到三位的八进制数</td>
+</tr>
+<tr>
+<td align="left">\xhh . . .</td>
+<td align="left">一个或多个数字的十六进制数</td>
+</tr>
+</tbody></table>
+<h4 id="C-封装"><a href="#C-封装" class="headerlink" title="C# 封装"></a>C# 封装</h4><p><strong>封装</strong> 被定义为”把一个或多个项目封闭在一个物理的或者逻辑的包中”。在面向对象程序设计方法论中，封装是为了防止对实现细节的访问。</p>
+<p>抽象和封装是面向对象程序设计的相关特性。抽象允许相关信息可视化，封装则使开发者<em>实现所需级别的抽象</em>。</p>
+<p>C# 封装根据具体的需要，设置使用者的访问权限，并通过 <strong>访问修饰符</strong> 来实现。</p>
+<p>一个 <strong>访问修饰符</strong> 定义了一个类成员的范围和可见性。C# 支持的访问修饰符如下所示：</p>
+<ul>
+<li>public：所有对象都可以访问；</li>
+<li>private：对象本身在对象内部可以访问；</li>
+<li>protected：只有该类对象及其子类对象可以访问</li>
+<li>internal：同一个程序集的对象可以访问；</li>
+<li>protected internal：访问限于当前程序集或派生自包含类的类型。</li>
+</ul>
+<p><strong>Console.Read()、Console.ReadLine()</strong></p>
+<p>  相同点：</p>
+<p>​    1.两者都是用于输入的函数。</p>
+<p>   不同点：</p>
+<p>​    \1. Read只能读取一个字符，ReadLine可以读取一个字符串</p>
+<p>​          如 Read读取A和AASDGU的返回值都是一样的 都为A的ASCII值，对于后续的ASDGU不理会。</p>
+<p>​            而ReadLine则为A和AASDGU原样输出。</p>
+<p>​     2.Read输出的结果为字符串的ASCII码值，而ReadLine输出字符串。</p>
+<p>​    \3. Read只接受任意键盘输入,ReadLine接受回车。</p>
+<p>​      Read键盘任意键往下执行，ReadLine 接受回车往下执行。</p>
+<p>Console.readKey():</p>
+<p>​    在键盘敲击任意键后退出。一般在Console.Write()或Console,WriteLine()后加入这个函数，使窗口停留直至输入任意键关闭窗口。</p>
+<h4 id="C-中定义方法"><a href="#C-中定义方法" class="headerlink" title="C# 中定义方法"></a>C# 中定义方法</h4><p>当定义一个方法时，从根本上说是在声明它的结构的元素。在 C# 中，定义方法的语法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Access Specifier&gt; &lt;Return Type&gt; &lt;Method Name&gt;(Parameter List)</span><br><span class="line">&#123;</span><br><span class="line">   Method Body</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面是方法的各个元素：</p>
+<ul>
+<li><strong>Access Specifier</strong>：访问修饰符，这个决定了变量或方法对于另一个类的可见性。</li>
+<li><strong>Return type</strong>：返回类型，一个方法可以返回一个值。返回类型是方法返回的值的数据类型。如果方法不返回任何值，则返回类型为 <strong>void</strong>。</li>
+<li><strong>Method name</strong>：方法名称，是一个唯一的标识符，且是大小写敏感的。它不能与类中声明的其他标识符相同。</li>
+<li><strong>Parameter list</strong>：参数列表，使用圆括号括起来，该参数是用来传递和接收方法的数据。参数列表是指方法的参数类型、顺序和数量。参数是可选的，也就是说，一个方法可能不包含参数。</li>
+<li><strong>Method body</strong>：方法主体，包含了完成任务所需的指令集。</li>
+</ul>
+<h4 id="ref和out"><a href="#ref和out" class="headerlink" title="ref和out"></a>ref和out</h4><p><strong>区别：</strong>当你在使用ref传递参数的时候，ref修饰的参数必须要有值，但是out可以使用一个未赋值的变量作为参数传递。</p>
+<p><strong>相同点：</strong>ref和out都是按地址传递,使用后都将改变原来参数的数值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">out、ref都是引用传递，传递后使用都会改变原有的值</span><br><span class="line"></span><br><span class="line">out是只出不进。ref是有进有出</span><br><span class="line"></span><br><span class="line">out用法，一般用于需要返回多个参数时，如在需要返回分页的数据时 同时返回总条数或者TryParse()会用到</span><br><span class="line"></span><br><span class="line">ref用法，一般用于在改变一个参数时，把他的改变反应到变量中 如在递归中	</span><br></pre></td></tr></table></figure>
+
+<h4 id="C-可空类型（Nullable）"><a href="#C-可空类型（Nullable）" class="headerlink" title="C# 可空类型（Nullable）"></a>C# 可空类型（Nullable）</h4><h5 id="C-单问号-与-双问号"><a href="#C-单问号-与-双问号" class="headerlink" title="C# 单问号 ? 与 双问号 ??"></a>C# 单问号 ? 与 双问号 ??</h5><p><strong>?</strong> : 单问号用于对 int,double,bool 等无法直接赋值为 null 的数据类型进行 null 的赋值，意思是这个数据类型是 Nullable 类型的。</p>
+<p><strong>??</strong> : 双问号 可用于判断一个变量在为 null 时返回一个指定的值。(如果第一个操作数的值为null，则运算符返回第二个操作数的值，否则返回第一个操作数的值。)</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CalculatorApplication</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">class</span> <span class="title">NullablesAtShow</span></span><br><span class="line">   &#123;</span><br><span class="line">         </span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>      &#123;</span><br><span class="line">         </span><br><span class="line">         <span class="keyword">double</span>? num1 = <span class="literal">null</span>;</span><br><span class="line">         <span class="keyword">double</span>? num2 = <span class="number">3.14157</span>;</span><br><span class="line">         <span class="keyword">double</span> num3;</span><br><span class="line">         num3 = num1 ?? <span class="number">5.34</span>;      <span class="comment">// num1 如果为空值则返回 5.34</span></span><br><span class="line">         Console.WriteLine(<span class="string">&quot;num3 的值： &#123;0&#125;&quot;</span>, num3);</span><br><span class="line">         num3 = num2 ?? <span class="number">5.34</span>;</span><br><span class="line">         Console.WriteLine(<span class="string">&quot;num3 的值： &#123;0&#125;&quot;</span>, num3);</span><br><span class="line">         Console.ReadLine();</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//运行结果</span></span><br><span class="line"><span class="comment">//num3的值：5.34</span></span><br><span class="line"><span class="comment">//num3的值：3.14157</span></span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/chuipaopao-W.github.io/2020/11/19/c#11.7/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/11/19/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98%E3%80%90%20if(a%20==%201%20&&%20a%20==%202%20&&%20a%20==%203)%20%E3%80%91/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title"></div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "",
+    app_key: "",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2020
+        <i class="ri-heart-fill heart_icon"></i> John Doe
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+      <li>
+          <img src="/images/beian.png"></img>
+          <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=01234567890123" target="_black" rel="nofollow">浙公网安备01234567890123号</a>
+      </li>
+        
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src=''></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="漂"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>

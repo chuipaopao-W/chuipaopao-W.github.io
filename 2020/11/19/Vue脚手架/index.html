@@ -60,7 +60,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-Element-UI的基本使用"
+  id="post-Vue脚手架"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -69,15 +69,15 @@
   <div class="article-inner">
      
     <div class="article-meta">
-      <a href="/2020/10/03/Element-UI%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time datetime="2020-10-03T07:59:46.759Z" itemprop="datePublished">2020-10-03</time>
+      <a href="/2020/11/19/Vue%E8%84%9A%E6%89%8B%E6%9E%B6/" class="article-date">
+  <time datetime="2020-11-19T11:11:22.301Z" itemprop="datePublished">2020-11-19</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">537</span>
+            <span class="post-count">364</span>
         </span>
     </span>
 
@@ -86,7 +86,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2 分钟</span>
+            <span class="post-count">1 分钟</span>
         </span>
     </span>
 </div>
@@ -101,31 +101,28 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="Element-UI的基本使用"><a href="#Element-UI的基本使用" class="headerlink" title="Element-UI的基本使用"></a>Element-UI的基本使用</h2><h3 id="什么是Element-UI？"><a href="#什么是Element-UI？" class="headerlink" title="什么是Element-UI？"></a>什么是Element-UI？</h3><p>Element-UI：一套为开发者，设计师和产品经理准备的基于Vue 2.0的桌面端组件库。</p>
-<p>官方地址为：<a target="_blank" rel="noopener" href="http://element-cn.eleme.io/#/zh-CN">http://element-cn.eleme.io/#/zh-CN</a></p>
-<p>这些组件库封装了一些标准的样式 ，可以省去优化样式的时间，把时间更多的放在业务逻辑上，从而提高开发效率。</p>
-<h3 id="Element-UI的安装"><a href="#Element-UI的安装" class="headerlink" title="Element-UI的安装"></a>Element-UI的安装</h3><h4 id="1-基于命令行方式手动安装"><a href="#1-基于命令行方式手动安装" class="headerlink" title="1.基于命令行方式手动安装"></a>1.基于命令行方式手动安装</h4><p>第一步：安装依赖包：<strong>npm i element-ui -S</strong></p>
-<p>第二步：导入Element-UI相关资源：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//导入组件库</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> ElementUI <span class="keyword">from</span> <span class="string">&#x27;element-ui&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//导入组件相关样式 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;element-ui/lib/theme-chalk/index.css&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//配置Vue插件</span></span><br><span class="line"></span><br><span class="line">Vue.use(ElementUI)</span><br></pre></td></tr></table></figure>
+  <h2 id="Vue脚手架"><a href="#Vue脚手架" class="headerlink" title="Vue脚手架"></a>Vue脚手架</h2><h3 id="脚手架的基本语法"><a href="#脚手架的基本语法" class="headerlink" title="脚手架的基本语法"></a>脚手架的基本语法</h3><p>vue脚手架用于快速生成Vue项目基础架构，其官网地址为：https：//cli.vue.js.org/zh/</p>
+<h4 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h4><p><strong>1.安装3.x版本的Vue脚手架</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br></pre></td></tr></table></figure>
 
-<p>第三步：在App.vue中放入组件代码  这里以一个button组件代码为例  运行<strong>npm run serve</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-row</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span>&gt;</span>默认按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span>&gt;</span>主要按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;success&quot;</span>&gt;</span>成功按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;info&quot;</span>&gt;</span>信息按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;warning&quot;</span>&gt;</span>警告按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;danger&quot;</span>&gt;</span>危险按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>效果：</p>
-<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201003151917617.png" alt="image-20201003151917617"></p>
-<h4 id="2-基于图形化界面自动安装"><a href="#2-基于图形化界面自动安装" class="headerlink" title="2.基于图形化界面自动安装"></a>2.基于图形化界面自动安装</h4><p>第一步：运行 <strong>vue ui</strong> 命令，打开图形化界面</p>
-<p>第二步：通过Vue项目管理器 ，进入具体的项目配置面板</p>
-<p>第三步：点击 <strong>插件</strong> –&gt;<strong>添加插件</strong> ，进入插件查询面板</p>
-<p>第四步：搜索<strong>vue-cli-plugin-element</strong>并安装</p>
-<p>第五步:配置插件，实现按需导入，从而减少打包后项目的体积 如图：</p>
-<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201003152920071.png" alt="image-20201003152920071"></p>
-<p>第六步：测试是否安装成功</p>
-<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201003153159477.png" alt="image-20201003153159477"></p>
-<p>第七步：打开项目的main.js 发现新引入了一行<strong>import ‘./plugins/element.js’</strong>  ，然后ctrl +鼠标点击进入这个文件发现以下内容：</p>
-<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201003153623310.png" alt="    "></p>
-<p>这表示从<strong>element-ui</strong>中按需导入了<strong>button</strong>组件并且把button注册成了Vue的组件文件，这样的话每一个组件中都可以使用button按钮了。</p>
-<p>接下来把拷过来的button代码放到App.vue中进行验证：</p>
-<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201003155521638.png" alt="image-20201003155521638"></p>
+
+<p><strong>2.基于3.x版本的脚手架创建vue项目</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.基于交互式命令的方式，创建 新版 vue 项目</span></span><br><span class="line">vue create my-project</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.基于图形化界面的方式，创建 新版 vue 项目</span></span><br><span class="line">vue ui</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.基于2.x的旧模板，创建 旧版 vue 项目(了解就行)</span></span><br><span class="line">npm install -g @vue/cli-init</span><br><span class="line">vue init webpack my-project</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Vue脚手架生成的项目结构分析"><a href="#Vue脚手架生成的项目结构分析" class="headerlink" title="Vue脚手架生成的项目结构分析"></a>Vue脚手架生成的项目结构分析</h3><p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201003144346652.png" alt="image-20201003144346652"></p>
+<h3 id="Vue脚手架的自定义配置"><a href="#Vue脚手架的自定义配置" class="headerlink" title="Vue脚手架的自定义配置"></a>Vue脚手架的自定义配置</h3><h4 id="1-通过package-json配置项目"><a href="#1-通过package-json配置项目" class="headerlink" title="1.通过package.json配置项目"></a>1.通过package.json配置项目</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//必须是符合规范的json语法  下面是配置运行后浏览器自动打开界面</span></span><br><span class="line">&quot;vue&quot;:&#123;</span><br><span class="line">	&quot;devServer&quot;:&#123;</span><br><span class="line">        &quot;port&quot;:&quot;8888&quot;,</span><br><span class="line">        &quot;open&quot;:true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：不推荐使用这种配置方式，因为package.json 主要用来管理<strong>包的配置信息</strong>；为了<strong>方便后期维护</strong>，推荐将vue脚手架相关的配置，单独定义到vue.config.js配置文件中。</p>
+<h4 id="2-通过vue-config-js配置项目"><a href="#2-通过vue-config-js配置项目" class="headerlink" title="2.通过vue.config.js配置项目"></a>2.通过vue.config.js配置项目</h4><p>第一步：在根目录新建一个vue.config.js的文件</p>
+<p>第二步：在vue.config.js中进行下面的配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;   <span class="comment">//向外暴露配置</span></span><br><span class="line">    devServer:&#123;</span><br><span class="line">        open:<span class="literal">true</span>,</span><br><span class="line">        port:<span class="number">8848</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>…Vue脚手架的基本用法和配置就在这里了</p>
  
       <!-- reward -->
       
@@ -196,7 +193,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/chuipaopao-W.github.io/2020/10/03/Element-UI%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/chuipaopao-W.github.io/2020/11/19/Vue%E8%84%9A%E6%89%8B%E6%9E%B6/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -207,7 +204,7 @@
    
   <nav class="article-nav">
     
-      <a href="/2020/10/15/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98%E3%80%90%20if(a%20==%201%20&&%20a%20==%202%20&&%20a%20==%203)%20%E3%80%91/" class="article-nav-link">
+      <a href="/2020/11/19/webpack%20%E5%8A%A0%E8%BD%BD%E5%99%A8/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
@@ -217,7 +214,7 @@
       </a>
     
     
-      <a href="/2020/10/03/Vue%E8%84%9A%E6%89%8B%E6%9E%B6/" class="article-nav-link">
+      <a href="/2020/11/19/Element-UI%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title"></div>
       </a>

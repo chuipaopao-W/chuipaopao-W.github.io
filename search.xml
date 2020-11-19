@@ -2,7 +2,34 @@
 <search>
   <entry>
     <title></title>
-    <url>/2020/10/03/Element-UI%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
+    <url>/2020/11/19/Vue%E8%84%9A%E6%89%8B%E6%9E%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Vue脚手架"><a href="#Vue脚手架" class="headerlink" title="Vue脚手架"></a>Vue脚手架</h2><h3 id="脚手架的基本语法"><a href="#脚手架的基本语法" class="headerlink" title="脚手架的基本语法"></a>脚手架的基本语法</h3><p>vue脚手架用于快速生成Vue项目基础架构，其官网地址为：https：//cli.vue.js.org/zh/</p>
+<h4 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h4><p><strong>1.安装3.x版本的Vue脚手架</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2.基于3.x版本的脚手架创建vue项目</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1.基于交互式命令的方式，创建 新版 vue 项目</span></span><br><span class="line">vue create my-project</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.基于图形化界面的方式，创建 新版 vue 项目</span></span><br><span class="line">vue ui</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.基于2.x的旧模板，创建 旧版 vue 项目(了解就行)</span></span><br><span class="line">npm install -g @vue/cli-init</span><br><span class="line">vue init webpack my-project</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Vue脚手架生成的项目结构分析"><a href="#Vue脚手架生成的项目结构分析" class="headerlink" title="Vue脚手架生成的项目结构分析"></a>Vue脚手架生成的项目结构分析</h3><p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201003144346652.png" alt="image-20201003144346652"></p>
+<h3 id="Vue脚手架的自定义配置"><a href="#Vue脚手架的自定义配置" class="headerlink" title="Vue脚手架的自定义配置"></a>Vue脚手架的自定义配置</h3><h4 id="1-通过package-json配置项目"><a href="#1-通过package-json配置项目" class="headerlink" title="1.通过package.json配置项目"></a>1.通过package.json配置项目</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="comment">//必须是符合规范的json语法  下面是配置运行后浏览器自动打开界面</span></span><br><span class="line">&quot;vue&quot;:&#123;</span><br><span class="line">	&quot;devServer&quot;:&#123;</span><br><span class="line">        &quot;port&quot;:&quot;8888&quot;,</span><br><span class="line">        &quot;open&quot;:true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：不推荐使用这种配置方式，因为package.json 主要用来管理<strong>包的配置信息</strong>；为了<strong>方便后期维护</strong>，推荐将vue脚手架相关的配置，单独定义到vue.config.js配置文件中。</p>
+<h4 id="2-通过vue-config-js配置项目"><a href="#2-通过vue-config-js配置项目" class="headerlink" title="2.通过vue.config.js配置项目"></a>2.通过vue.config.js配置项目</h4><p>第一步：在根目录新建一个vue.config.js的文件</p>
+<p>第二步：在vue.config.js中进行下面的配置：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;   <span class="comment">//向外暴露配置</span></span><br><span class="line">    devServer:&#123;</span><br><span class="line">        open:<span class="literal">true</span>,</span><br><span class="line">        port:<span class="number">8848</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>…Vue脚手架的基本用法和配置就在这里了</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2020/11/19/Element-UI%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Element-UI的基本使用"><a href="#Element-UI的基本使用" class="headerlink" title="Element-UI的基本使用"></a>Element-UI的基本使用</h2><h3 id="什么是Element-UI？"><a href="#什么是Element-UI？" class="headerlink" title="什么是Element-UI？"></a>什么是Element-UI？</h3><p>Element-UI：一套为开发者，设计师和产品经理准备的基于Vue 2.0的桌面端组件库。</p>
 <p>官方地址为：<a href="http://element-cn.eleme.io/#/zh-CN">http://element-cn.eleme.io/#/zh-CN</a></p>
 <p>这些组件库封装了一些标准的样式 ，可以省去优化样式的时间，把时间更多的放在业务逻辑上，从而提高开发效率。</p>
@@ -32,7 +59,136 @@
   </entry>
   <entry>
     <title></title>
-    <url>/2020/10/02/webpack%20%E5%8A%A0%E8%BD%BD%E5%99%A8/</url>
+    <url>/2020/11/19/c#11.7/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="11-7"><a href="#11-7" class="headerlink" title="11.7"></a>11.7</h3><h4 id="单精度和双精度数据类型"><a href="#单精度和双精度数据类型" class="headerlink" title="单精度和双精度数据类型"></a>单精度和双精度数据类型</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">float数据在计算机机器内部是2进制数，一般用1个字（4个字节，32位）来表示，</span><br><span class="line">1位符号位</span><br><span class="line">8位指数位</span><br><span class="line">23位“尾数”位</span><br><span class="line">【2^23&#x3D;8388608，一共7位，这意味着最多能有7位有效数字，但是能绝对能保证的为6位，也即float的精度为6~7位。】</span><br><span class="line">共32 位 2进制数。</span><br><span class="line">平时讲 有效数字 是6~7位 ，指10进制。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">单精度和双精度变量的范围与整数不同，在整数中是每个位只存放<span class="number">0</span>和<span class="number">1</span>，每位作为一个有效位出现，可以直接通过将二进制转换为十进制的方式来完成最大最小值的获得。</span><br><span class="line">而浮点型的比较复杂，建议你找一下IEEE754标准看一下。 </span><br><span class="line">在IEEE754标准中进行了单精度浮点数(<span class="keyword">float</span>)和双精度数浮点数(<span class="keyword">double</span>)的定义。<span class="keyword">float</span>有<span class="number">32b</span>it，<span class="keyword">double</span>有<span class="number">64b</span>it。它们的构成包括符号位、指数位和尾数位。 </span><br><span class="line">这些位的构成如下： </span><br><span class="line">种类-------符号位-------------指数位----------------尾数位---- </span><br><span class="line"><span class="keyword">float</span>---第<span class="number">31</span>位(占<span class="number">1b</span>it)---第<span class="number">30</span><span class="number">-23</span>位(占<span class="number">8b</span>it)----第<span class="number">22</span><span class="number">-0</span>位(占<span class="number">23b</span>it) </span><br><span class="line"><span class="keyword">double</span>--第<span class="number">63</span>位(占<span class="number">1b</span>it)---第<span class="number">62</span><span class="number">-52</span>位(占<span class="number">11b</span>it)---第<span class="number">51</span><span class="number">-0</span>位(占<span class="number">52b</span>it) </span><br><span class="line"></span><br><span class="line">取值范围主要看指数部分： </span><br><span class="line"><span class="keyword">float</span>的指数部分有<span class="number">8b</span>it(<span class="number">2</span>^<span class="number">8</span>)，由于是有符号型，所以得到对应的指数范围<span class="number">-128</span>~<span class="number">127</span>。 </span><br><span class="line"><span class="keyword">double</span>的指数部分有<span class="number">11b</span>it(<span class="number">2</span>^<span class="number">11</span>)，由于是有符号型，所以得到对应的指数范围<span class="number">-1024</span>~<span class="number">1023</span>。 </span><br><span class="line"></span><br><span class="line">由于<span class="keyword">float</span>的指数部分对应的指数范围为<span class="number">-128</span>~<span class="number">127</span>，所以取值范围为： </span><br><span class="line"><span class="number">-2</span>^<span class="number">128</span>到<span class="number">2</span>^<span class="number">127</span>，约等于<span class="number">-3.4E38</span> — +<span class="number">3.4E38</span> </span><br><span class="line"></span><br><span class="line">精度(有效数字)主要看尾数位： </span><br><span class="line"><span class="keyword">float</span>的尾数位是<span class="number">23b</span>it，对应<span class="number">7</span>~<span class="number">8</span>位十进制数，所以有效数字有的编译器是<span class="number">7</span>位，也有的是<span class="number">8</span>位</span><br><span class="line"></span><br><span class="line"><span class="number">23</span>位“尾数”位</span><br><span class="line">【<span class="number">2</span>^<span class="number">23</span>=<span class="number">8388608</span>，一共<span class="number">7</span>位，这意味着最多能有<span class="number">7</span>位有效数字，但是能绝对能保证的为<span class="number">6</span>位，也即<span class="keyword">float</span>的精度为<span class="number">6</span>~<span class="number">7</span>位。】</span><br></pre></td></tr></table></figure>
+
+<p><strong>符号位0代表为正 1代表为负</strong></p>
+<p><strong>double有1位符号位 47位尾数位  16位指数位</strong></p>
+<h4 id="接受来自用户的值"><a href="#接受来自用户的值" class="headerlink" title="接受来自用户的值"></a>接受来自用户的值</h4><p><strong>System</strong> 命名空间中的 <strong>Console</strong> 类提供了一个函数 **ReadLine()**，用于接收来自用户的输入，并把它存储到一个变量中。</p>
+<h4 id="C-中的两种表达式："><a href="#C-中的两种表达式：" class="headerlink" title="C# 中的两种表达式："></a>C# 中的两种表达式：</h4><ol>
+<li><strong>lvalue</strong>：lvalue 表达式可以出现在赋值语句的左边或右边。</li>
+<li><strong>rvalue</strong>：rvalue 表达式可以出现在赋值语句的右边，不能出现在赋值语句的左边。</li>
+</ol>
+<p>变量是 lvalue 的，所以可以出现在赋值语句的左边。数值是 rvalue 的，因此不能被赋值，不能出现在赋值语句的左边。</p>
+<p>下面是一个有效的语句：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int g &#x3D; 20;</span><br></pre></td></tr></table></figure>
+
+<p>下面是一个无效的语句，会产生编译时错误：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">10 &#x3D; 20;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="转义序列码"><a href="#转义序列码" class="headerlink" title="转义序列码"></a>转义序列码</h4><table>
+<thead>
+<tr>
+<th align="left">转义序列</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\</td>
+<td align="left">\ 字符</td>
+</tr>
+<tr>
+<td align="left">&#39;</td>
+<td align="left">‘ 字符</td>
+</tr>
+<tr>
+<td align="left">&quot;</td>
+<td align="left">“ 字符</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td align="left">? 字符</td>
+</tr>
+<tr>
+<td align="left">\a</td>
+<td align="left">Alert 或 bell</td>
+</tr>
+<tr>
+<td align="left">\b</td>
+<td align="left">退格键（Backspace）</td>
+</tr>
+<tr>
+<td align="left">\f</td>
+<td align="left">换页符（Form feed）</td>
+</tr>
+<tr>
+<td align="left">\n</td>
+<td align="left">换行符（Newline）</td>
+</tr>
+<tr>
+<td align="left">\r</td>
+<td align="left">回车</td>
+</tr>
+<tr>
+<td align="left">\t</td>
+<td align="left">水平制表符 tab</td>
+</tr>
+<tr>
+<td align="left">\v</td>
+<td align="left">垂直制表符 tab</td>
+</tr>
+<tr>
+<td align="left">\ooo</td>
+<td align="left">一到三位的八进制数</td>
+</tr>
+<tr>
+<td align="left">\xhh . . .</td>
+<td align="left">一个或多个数字的十六进制数</td>
+</tr>
+</tbody></table>
+<h4 id="C-封装"><a href="#C-封装" class="headerlink" title="C# 封装"></a>C# 封装</h4><p><strong>封装</strong> 被定义为”把一个或多个项目封闭在一个物理的或者逻辑的包中”。在面向对象程序设计方法论中，封装是为了防止对实现细节的访问。</p>
+<p>抽象和封装是面向对象程序设计的相关特性。抽象允许相关信息可视化，封装则使开发者<em>实现所需级别的抽象</em>。</p>
+<p>C# 封装根据具体的需要，设置使用者的访问权限，并通过 <strong>访问修饰符</strong> 来实现。</p>
+<p>一个 <strong>访问修饰符</strong> 定义了一个类成员的范围和可见性。C# 支持的访问修饰符如下所示：</p>
+<ul>
+<li>public：所有对象都可以访问；</li>
+<li>private：对象本身在对象内部可以访问；</li>
+<li>protected：只有该类对象及其子类对象可以访问</li>
+<li>internal：同一个程序集的对象可以访问；</li>
+<li>protected internal：访问限于当前程序集或派生自包含类的类型。</li>
+</ul>
+<p><strong>Console.Read()、Console.ReadLine()</strong></p>
+<p>  相同点：</p>
+<p>​    1.两者都是用于输入的函数。</p>
+<p>   不同点：</p>
+<p>​    \1. Read只能读取一个字符，ReadLine可以读取一个字符串</p>
+<p>​          如 Read读取A和AASDGU的返回值都是一样的 都为A的ASCII值，对于后续的ASDGU不理会。</p>
+<p>​            而ReadLine则为A和AASDGU原样输出。</p>
+<p>​     2.Read输出的结果为字符串的ASCII码值，而ReadLine输出字符串。</p>
+<p>​    \3. Read只接受任意键盘输入,ReadLine接受回车。</p>
+<p>​      Read键盘任意键往下执行，ReadLine 接受回车往下执行。</p>
+<p>Console.readKey():</p>
+<p>​    在键盘敲击任意键后退出。一般在Console.Write()或Console,WriteLine()后加入这个函数，使窗口停留直至输入任意键关闭窗口。</p>
+<h4 id="C-中定义方法"><a href="#C-中定义方法" class="headerlink" title="C# 中定义方法"></a>C# 中定义方法</h4><p>当定义一个方法时，从根本上说是在声明它的结构的元素。在 C# 中，定义方法的语法如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;Access Specifier&gt; &lt;Return Type&gt; &lt;Method Name&gt;(Parameter List)</span><br><span class="line">&#123;</span><br><span class="line">   Method Body</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面是方法的各个元素：</p>
+<ul>
+<li><strong>Access Specifier</strong>：访问修饰符，这个决定了变量或方法对于另一个类的可见性。</li>
+<li><strong>Return type</strong>：返回类型，一个方法可以返回一个值。返回类型是方法返回的值的数据类型。如果方法不返回任何值，则返回类型为 <strong>void</strong>。</li>
+<li><strong>Method name</strong>：方法名称，是一个唯一的标识符，且是大小写敏感的。它不能与类中声明的其他标识符相同。</li>
+<li><strong>Parameter list</strong>：参数列表，使用圆括号括起来，该参数是用来传递和接收方法的数据。参数列表是指方法的参数类型、顺序和数量。参数是可选的，也就是说，一个方法可能不包含参数。</li>
+<li><strong>Method body</strong>：方法主体，包含了完成任务所需的指令集。</li>
+</ul>
+<h4 id="ref和out"><a href="#ref和out" class="headerlink" title="ref和out"></a>ref和out</h4><p><strong>区别：</strong>当你在使用ref传递参数的时候，ref修饰的参数必须要有值，但是out可以使用一个未赋值的变量作为参数传递。</p>
+<p><strong>相同点：</strong>ref和out都是按地址传递,使用后都将改变原来参数的数值。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">out、ref都是引用传递，传递后使用都会改变原有的值</span><br><span class="line"></span><br><span class="line">out是只出不进。ref是有进有出</span><br><span class="line"></span><br><span class="line">out用法，一般用于需要返回多个参数时，如在需要返回分页的数据时 同时返回总条数或者TryParse()会用到</span><br><span class="line"></span><br><span class="line">ref用法，一般用于在改变一个参数时，把他的改变反应到变量中 如在递归中	</span><br></pre></td></tr></table></figure>
+
+<h4 id="C-可空类型（Nullable）"><a href="#C-可空类型（Nullable）" class="headerlink" title="C# 可空类型（Nullable）"></a>C# 可空类型（Nullable）</h4><h5 id="C-单问号-与-双问号"><a href="#C-单问号-与-双问号" class="headerlink" title="C# 单问号 ? 与 双问号 ??"></a>C# 单问号 ? 与 双问号 ??</h5><p><strong>?</strong> : 单问号用于对 int,double,bool 等无法直接赋值为 null 的数据类型进行 null 的赋值，意思是这个数据类型是 Nullable 类型的。</p>
+<p><strong>??</strong> : 双问号 可用于判断一个变量在为 null 时返回一个指定的值。(如果第一个操作数的值为null，则运算符返回第二个操作数的值，否则返回第一个操作数的值。)</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CalculatorApplication</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">class</span> <span class="title">NullablesAtShow</span></span><br><span class="line">   &#123;</span><br><span class="line">         </span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>      &#123;</span><br><span class="line">         </span><br><span class="line">         <span class="keyword">double</span>? num1 = <span class="literal">null</span>;</span><br><span class="line">         <span class="keyword">double</span>? num2 = <span class="number">3.14157</span>;</span><br><span class="line">         <span class="keyword">double</span> num3;</span><br><span class="line">         num3 = num1 ?? <span class="number">5.34</span>;      <span class="comment">// num1 如果为空值则返回 5.34</span></span><br><span class="line">         Console.WriteLine(<span class="string">&quot;num3 的值： &#123;0&#125;&quot;</span>, num3);</span><br><span class="line">         num3 = num2 ?? <span class="number">5.34</span>;</span><br><span class="line">         Console.WriteLine(<span class="string">&quot;num3 的值： &#123;0&#125;&quot;</span>, num3);</span><br><span class="line">         Console.ReadLine();</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//运行结果</span></span><br><span class="line"><span class="comment">//num3的值：5.34</span></span><br><span class="line"><span class="comment">//num3的值：3.14157</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2020/11/19/webpack%20%E5%8A%A0%E8%BD%BD%E5%99%A8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="webpack-加载器"><a href="#webpack-加载器" class="headerlink" title="webpack 加载器"></a>webpack 加载器</h2><p>通过loader打包非js模块</p>
 <p>在实际开发过程中 webpack默认只能打包处理以.js后缀名结尾的模块，其他的非.js后缀名结尾的模块，webpack默认处理不了，需要使用loader加载器才能正常打包，否则会报错。</p>
 <h3 id="webpack中加载器的基本使用"><a href="#webpack中加载器的基本使用" class="headerlink" title="webpack中加载器的基本使用"></a>webpack中加载器的基本使用</h3><h4 id="1-打包处理css文件"><a href="#1-打包处理css文件" class="headerlink" title="1 打包处理css文件"></a><strong>1 打包处理css文件</strong></h4><p>第一步：运行 npm i style-loader  css-loader -D命令，安装处理css文件的loader</p>
@@ -60,7 +216,7 @@
 <p>第三步：在webpack.config.js的module-&gt;rules数组中，修改css的loader规则：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>:&#123;</span><br><span class="line">    rules:[</span><br><span class="line">        &#123;<span class="attr">test</span>:<span class="regexp">/\.css$/</span>,use:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>,<span class="string">&#x27;postcss-loader&#x27;</span>]&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>注意：</strong>第一步有一个版本问题  默认安装的时最新版本的autoprefixer 使用最新版本的话可能会出现bug 导致css加载器无法使用  这时候可以<strong>降低</strong>autoprefixer的版本  执行以下命令：<strong>npm install <a href="mailto:&#97;&#117;&#116;&#111;&#x70;&#114;&#101;&#x66;&#x69;&#120;&#x65;&#x72;&#x40;&#x39;&#x2e;&#x38;&#46;&#x36;">&#97;&#117;&#116;&#111;&#x70;&#114;&#101;&#x66;&#x69;&#120;&#x65;&#x72;&#x40;&#x39;&#x2e;&#x38;&#46;&#x36;</a> -D</strong></p>
+<p><strong>注意：</strong>第一步有一个版本问题  默认安装的时最新版本的autoprefixer 使用最新版本的话可能会出现bug 导致css加载器无法使用  这时候可以<strong>降低</strong>autoprefixer的版本  执行以下命令：<strong>npm install <a href="mailto:&#x61;&#117;&#x74;&#x6f;&#112;&#114;&#x65;&#102;&#105;&#120;&#x65;&#114;&#64;&#57;&#46;&#x38;&#x2e;&#x36;">&#x61;&#117;&#x74;&#x6f;&#112;&#114;&#x65;&#102;&#105;&#120;&#x65;&#114;&#64;&#57;&#46;&#x38;&#x2e;&#x36;</a> -D</strong></p>
 <h4 id="5-打包样式表中的图片和字体文件"><a href="#5-打包样式表中的图片和字体文件" class="headerlink" title="5.打包样式表中的图片和字体文件"></a><strong>5.打包样式表中的图片和字体文件</strong></h4><p>第一步：运行 npm i url-loader file-loader -D命令</p>
 <p>第二步：在webpack.config.js的module-&gt;rules数组中，添加loader规则：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#123;<span class="attr">test</span>:<span class="regexp">/\.jpg|png|gif|bmp|ttf|eot|svg|woff|woff2$/</span>,use:[<span class="string">&#x27;url-loader?limit=16940&#x27;</span>]&#125;</span><br><span class="line"><span class="comment">//其中？之后的是loader的参数项， limit用来指定图片的大小，单位是字节（byte），只有小于limit大小的图片，才会被转为base64图片</span></span><br></pre></td></tr></table></figure>
@@ -88,34 +244,7 @@
   </entry>
   <entry>
     <title></title>
-    <url>/2020/10/03/Vue%E8%84%9A%E6%89%8B%E6%9E%B6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Vue脚手架"><a href="#Vue脚手架" class="headerlink" title="Vue脚手架"></a>Vue脚手架</h2><h3 id="脚手架的基本语法"><a href="#脚手架的基本语法" class="headerlink" title="脚手架的基本语法"></a>脚手架的基本语法</h3><p>vue脚手架用于快速生成Vue项目基础架构，其官网地址为：https：//cli.vue.js.org/zh/</p>
-<h4 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h4><p><strong>1.安装3.x版本的Vue脚手架</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>2.基于3.x版本的脚手架创建vue项目</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1.基于交互式命令的方式，创建 新版 vue 项目</span></span><br><span class="line">vue create my-project</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.基于图形化界面的方式，创建 新版 vue 项目</span></span><br><span class="line">vue ui</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.基于2.x的旧模板，创建 旧版 vue 项目(了解就行)</span></span><br><span class="line">npm install -g @vue/cli-init</span><br><span class="line">vue init webpack my-project</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Vue脚手架生成的项目结构分析"><a href="#Vue脚手架生成的项目结构分析" class="headerlink" title="Vue脚手架生成的项目结构分析"></a>Vue脚手架生成的项目结构分析</h3><p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201003144346652.png" alt="image-20201003144346652"></p>
-<h3 id="Vue脚手架的自定义配置"><a href="#Vue脚手架的自定义配置" class="headerlink" title="Vue脚手架的自定义配置"></a>Vue脚手架的自定义配置</h3><h4 id="1-通过package-json配置项目"><a href="#1-通过package-json配置项目" class="headerlink" title="1.通过package.json配置项目"></a>1.通过package.json配置项目</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="comment">//必须是符合规范的json语法  下面是配置运行后浏览器自动打开界面</span></span><br><span class="line">&quot;vue&quot;:&#123;</span><br><span class="line">	&quot;devServer&quot;:&#123;</span><br><span class="line">        &quot;port&quot;:&quot;8888&quot;,</span><br><span class="line">        &quot;open&quot;:true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意</strong>：不推荐使用这种配置方式，因为package.json 主要用来管理<strong>包的配置信息</strong>；为了<strong>方便后期维护</strong>，推荐将vue脚手架相关的配置，单独定义到vue.config.js配置文件中。</p>
-<h4 id="2-通过vue-config-js配置项目"><a href="#2-通过vue-config-js配置项目" class="headerlink" title="2.通过vue.config.js配置项目"></a>2.通过vue.config.js配置项目</h4><p>第一步：在根目录新建一个vue.config.js的文件</p>
-<p>第二步：在vue.config.js中进行下面的配置：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;   <span class="comment">//向外暴露配置</span></span><br><span class="line">    devServer:&#123;</span><br><span class="line">        open:<span class="literal">true</span>,</span><br><span class="line">        port:<span class="number">8848</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>…Vue脚手架的基本用法和配置就在这里了</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2020/10/15/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98%E3%80%90%20if(a%20==%201%20&amp;&amp;%20a%20==%202%20&amp;&amp;%20a%20==%203)%20%E3%80%91/</url>
+    <url>/2020/11/19/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98%E3%80%90%20if(a%20==%201%20&amp;&amp;%20a%20==%202%20&amp;&amp;%20a%20==%203)%20%E3%80%91/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="经典问题【-if-a-1-amp-amp-a-2-amp-amp-a-3-】"><a href="#经典问题【-if-a-1-amp-amp-a-2-amp-amp-a-3-】" class="headerlink" title="经典问题【 if(a == 1 &amp;&amp; a == 2 &amp;&amp; a == 3) 】"></a>经典问题【 if(a == 1 &amp;&amp; a == 2 &amp;&amp; a == 3) 】</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span>)&#123;</span><br><span class="line">    <span class="comment">//... 使之成立    </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="思考方向-—-【利用隐式转换规则】"><a href="#思考方向-—-【利用隐式转换规则】" class="headerlink" title="思考方向 — 【利用隐式转换规则】"></a>思考方向 — 【<strong>利用隐式转换规则</strong>】</h4><p><code>==</code> 操作符在左右数据类型不一致时，会先进行隐式转换。</p>
